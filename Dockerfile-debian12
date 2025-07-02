@@ -1,0 +1,25 @@
+FROM debian:12
+
+RUN apt-get update && \
+    apt-get install -y g++ openssh-server && \
+    mkdir /var/run/sshd
+
+# Create a non-root user (optional but good for rootless containers)
+RUN useradd -ms /bin/bash devuser && echo 'devuser:password' | chpasswd
+
+# Add the C++ Hello World file
+COPY hello.cpp /home/devuser/hello.cpp
+
+# Switch to user
+USER devuser
+WORKDIR /home/devuser
+
+# Compile the hello.cpp on build (optional, could also compile during run)
+RUN g++ hello.cpp -o hello
+
+# Switch back to root to start sshd later
+USER root
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]
