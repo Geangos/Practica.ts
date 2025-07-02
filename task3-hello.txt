@@ -1,0 +1,12 @@
+# Install Podman
+sudo apt update
+sudo apt install podman -y
+
+# Dockerfile and hello.cpp created
+
+# Build the image
+podman build -t debian12 -f Dockerfile-debian12
+
+# Run and compile Hello World
+podman run -it debian12 /bin/bash
+./hello
