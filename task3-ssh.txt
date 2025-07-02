@@ -1,0 +1,9 @@
+# Run container with SSH server
+podman run -d --name ssh-container -p 2222:22 debian12
+
+# Connect from host to container
+ssh devuser@localhost -p 2222
+# Password: password
+
+# Optional: Debug mode
+ssh -vvv devuser@localhost -p 2222
