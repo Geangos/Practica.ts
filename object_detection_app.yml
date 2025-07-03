@@ -1,0 +1,8 @@
+object_detection_app/
+├── docker-compose.yml
+├── opencv_app/
+│   ├── Dockerfile
+│   └── app.py
+├── webserver/
+│   ├── Dockerfile
+│   └── server.py

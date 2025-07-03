@@ -1,0 +1,8 @@
+project/
+├── docker-compose.yml
+├── opencv_app/
+│   ├── Dockerfile
+│   └── app.py
+├── webserver/
+│   ├── Dockerfile
+│   └── server.py
